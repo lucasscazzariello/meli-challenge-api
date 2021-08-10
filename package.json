@@ -1,0 +1,29 @@
+{
+  "author": "Lucas Scazzariello",
+  "name": "meli-challenge-api",
+  "version": "1.0.0",
+  "description": "Meli challenge api",
+  "main": "server.js",
+  "scripts": {
+    "start": "npx nodemon server.js && npm front",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasscazzariello/meli-challenge-api.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasscazzariello/meli-challenge-api/issues"
+  },
+  "homepage": "https://github.com/lucasscazzariello/meli-challenge-api#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
