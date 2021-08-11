@@ -1,6 +1,5 @@
 // Dependencies
 const express = require('express');
-const bodyParser = require('body-parser')
 
 // Initializations
 const app = express();
@@ -9,10 +8,7 @@ const app = express();
 const port = process.env.PORT || 8080
 
 const routes = require('./routes');
-
-// Middlewares
-app.use(bodyParser.urlencoded({ extended: true, limit: '5mb' }));
-app.use(bodyParser.json({ limit: '5mb' }));
+const errorHandler = require('./errorHandler');
 
 // Configurar cabeceras y cors
 app.use((req, res, next) => {
@@ -26,6 +22,9 @@ app.use((req, res, next) => {
 
 // LLama a las rutas
 app.use(routes);
+
+// errorHandler
+app.use(errorHandler)
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en puerto ${port}`)
