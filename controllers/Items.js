@@ -26,10 +26,16 @@ const getItemById = async (req, res) => {
     try {
         const itemId = req.params.id
         const [detailResponse, descriptionResponse] = await Promise.all([axios.get(`${BASE_URL}items/${itemId}`), axios.get(`${BASE_URL}items/${itemId}/description`)])
+        let response = transformDetail({ detailResponse, descriptionResponse })
+        
+        const { category_id } = detailResponse.data
+        const categoryResponse = await axios.get(`${BASE_URL}categories/${category_id}`)
+        const { path_from_root } = categoryResponse.data
+        response.categories = path_from_root || []
 
         res.status(200).json({
             message: ('OK'),
-            data: transformDetail({ detailResponse, descriptionResponse })
+            data: response
         });
     } catch (err) {
         res.status(err.response.status).send(ERROR_MESSAGE);
